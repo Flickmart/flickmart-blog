@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply Switzer font globally */
+body {
+    font-family:
+        var(--font-switzer-regular),
+        system-ui,
+        -apple-system,
+        sans-serif;
+}
+
+/* Custom font variables */
+:root {
+    --font-switzer-bold: var(--font-switzer-bold);
+    --font-switzer-regular: var(--font-switzer-regular);
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 3.9%;
+        --primary: 0 0% 9%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 0 0% 9%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 45.1%;
+        --accent: 0 0% 96.1%;
+        --accent-foreground: 0 0% 9%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 89.8%;
+        --input: 0 0% 89.8%;
+        --ring: 0 0% 3.9%;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.5rem;
+
+        /* Brand colors */
+        --brand-primary: 6 100% 65%;
+        --brand-secondary: 0 0% 96%;
+        --accent-glow: 6 100% 50%;
+        --accent-color: 6 100% 65%; /* Orange/red for light mode */
+
+        /* Semantic background colors */
+        --surface-elevated: 0 0% 100%;
+        --surface-interactive: 0 0% 98%;
+
+        /* Map colors */
+        --map-background: 210 40% 98%;
+        --map-surface: 210 40% 95%;
+        --map-control-bg: 210 40% 90%;
+        --map-control-border: 210 40% 80%;
+        --map-control-text: 210 40% 30%;
+        --map-popup-bg: 210 40% 95%;
+        --map-popup-border: 210 40% 80%;
+
+        /* Text colors */
+        --text-muted: 210 10% 50%;
+        --text-subtle: 210 10% 40%;
+
+        /* Border colors */
+        --border-subtle: 210 10% 90%;
+        --border-strong: 210 10% 70%;
+    }
+    .dark {
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 0 0% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 0 0% 9%;
+        --secondary: 0 0% 14.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 0 0% 14.9%;
+        --muted-foreground: 0 0% 63.9%;
+        --accent: 0 0% 14.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 14.9%;
+        --input: 0 0% 14.9%;
+        --ring: 0 0% 83.1%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+
+        /* Brand colors - dark mode adjustments */
+        --brand-primary: 165 84% 45%; /* Emerald green for dark mode */
+        --brand-secondary: 0 0% 15%;
+        --accent-glow: 165 84% 45%;
+        --accent-color: 165 84% 45%; /* Emerald green for dark mode */
+
+        /* Semantic background colors - dark mode */
+        --surface-elevated: 0 0% 5%;
+        --surface-interactive: 0 0% 8%;
+
+        /* Map colors - dark mode */
+        --map-background: 215 25% 8%;
+        --map-surface: 215 25% 12%;
+        --map-control-bg: 215 25% 20%;
+        --map-control-border: 215 25% 30%;
+        --map-control-text: 210 10% 80%;
+        --map-popup-bg: 215 25% 15%;
+        --map-popup-border: 215 25% 30%;
+
+        /* Text colors - dark mode */
+        --text-muted: 210 10% 60%;
+        --text-subtle: 210 10% 70%;
+
+        /* Border colors - dark mode */
+        --border-subtle: 210 10% 20%;
+        --border-strong: 210 10% 35%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family:
+            var(--font-switzer-regular),
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+
+    /* Ensure all text elements use Switzer font */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family:
+            var(--font-switzer-bold),
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+
+    p,
+    span,
+    div,
+    button,
+    input,
+    textarea,
+    select {
+        font-family:
+            var(--font-switzer-regular),
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+}
+
+/* GitHub contribution graph styles for @uiw/react-heat-map */
+.w-heat-map svg {
+    @apply rounded-lg;
+}
+
+.w-heat-map rect:hover {
+    @apply stroke-gray-400 dark:stroke-gray-300 stroke-1;
+}
+
+.syntax-highlighter code {
+    font-family: "Dm Mono", monospace !important;
+}
+
+/* Syntax highlighter line highlighting */
+.syntax-highlighter pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.syntax-highlighter .highlighted-line {
+    background-color: rgba(204, 0, 255, 0.149) !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+}
+
+.syntax-highlighter .highlighted-line * {
+    background-color: inherit !important;
+}
+/* Custom drop shadow for location map */
+.drop-shadow-green {
+    filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.4));
+}
+
+/* Leaflet map customizations for location card */
+.leaflet-container {
+    background: hsl(var(--map-background)) !important;
+}
+
+/* Custom map theming for both light and dark themes */
+.leaflet-tile {
+    filter: brightness(1.1) contrast(1.02) saturate(0.98);
+}
+
+/* Style the map container to match your theme */
+.leaflet-control-container {
+    display: none; /* Hide default controls since we have custom ones */
+}
+
+/* Ensure map tiles blend with your background */
+.leaflet-tile-pane {
+    mix-blend-mode: multiply;
+}
+
+/* Light mode specific map styles */
+html:not(.dark) .leaflet-tile {
+    filter: brightness(0.95) contrast(1.05) saturate(1.1);
+}
+
+html:not(.dark) .leaflet-tile-pane {
+    mix-blend-mode: normal;
+}
