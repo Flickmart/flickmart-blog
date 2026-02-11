@@ -7,11 +7,13 @@ import { useTheme } from "next-themes";
 interface FlickMartBlogCardProps {
   blog: BlogPost;
   size?: "default" | "large";
+  className?: string;
 }
 
 export function FlickMartBlogCard({
   blog,
   size = "default",
+  className = "",
 }: FlickMartBlogCardProps) {
   const isLarge = size === "large";
   const { theme } = useTheme();
@@ -39,7 +41,7 @@ export function FlickMartBlogCard({
       href={`/blog/${blog.slug}`}
       className={`group flex flex-col overflow-hidden rounded-lg border transition-all duration-300 hover:shadow-lg ${
         isDark ? "border-gray-800 bg-gray-900" : "border-gray-200 bg-white"
-      }`}
+      } ${className}`}
     >
       {/* Image */}
       {imageUrl && (
