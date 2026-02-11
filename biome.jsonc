@@ -3,7 +3,8 @@
   "extends": [
     "ultracite",
     "ultracite/biome/core",
-    "ultracite/biome/next"
+    "ultracite/biome/next",
+    "ultracite/biome/react"
   ],
   "linter": {
     "rules": {

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "npx ultracite check",
-    "format": "npx ultracite fix",
+    "format": "pnpm dlx ultracite fix",
     "check": "ultracite check",
     "fix": "ultracite fix"
   },
