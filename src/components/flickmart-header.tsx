@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import {
@@ -25,8 +26,14 @@ export function FlickMartHeader() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#FF6B00] to-orange-600">
-              <span className="text-lg font-bold text-white">F</span>
+            <div className="flex h-8 w-8 items-center justify-center ">
+              <Image
+                src="/logo.svg"
+                alt="FlickMart Logo"
+                className="text-lg font-bold text-white"
+                width={60}
+                height={60}
+              />
             </div>
             <span
               className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
@@ -70,7 +77,7 @@ export function FlickMartHeader() {
               Newsletter
             </Link>
             <Link
-              href="#"
+              href="https://flickmart.app/"
               className="inline-flex items-center rounded-md bg-[#FF6B00] px-5 py-4 text-sm font-medium text-white transition-colors hover:bg-[#e65c00]"
             >
               Visit Flickmart
@@ -135,7 +142,7 @@ export function FlickMartHeader() {
                   Newsletter
                 </Link>
                 <Link
-                  href="#"
+                  href="https://flickmart.app/"
                   className="mt-4 block rounded-lg bg-[#FF6B00] px-4 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#e65c00]"
                 >
                   Visit Flickmart
