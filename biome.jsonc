@@ -1,6 +1,10 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite"],
+  "extends": [
+    "ultracite",
+    "ultracite/biome/core",
+    "ultracite/biome/next"
+  ],
   "linter": {
     "rules": {
       "nursery": {
@@ -10,7 +14,12 @@
         "noConsole": {
           "level": "warn",
           "options": {
-            "allow": ["assert", "error", "info", "warn"]
+            "allow": [
+              "assert",
+              "error",
+              "info",
+              "warn"
+            ]
           }
         },
         "noUnknownAtRules": "info"
