@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Flame } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 export function FlickMartHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,68 +13,73 @@ export function FlickMartHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-gray-900/95 dark:supports-[backdrop-filter]:bg-gray-900/60 ${
+      className={`sticky top-0 z-50 w-full  backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-gray-900/95 dark:supports-[backdrop-filter]:bg-gray-900/60 ${
         isDark ? "border-gray-800" : "border-gray-200"
       } ${isDark ? "bg-gray-900/95" : "bg-white/95"}`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 lg:py-6 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FF6B00]">
-              <Flame className="h-5 w-5 text-white" fill="white" />
+            <div className="flex h-8 w-8 items-center justify-center ">
+              <Image
+                src="/logo.png"
+                alt="FlickMart Logo"
+                width={80}
+                height={80}
+              />
             </div>
             <span
-              className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
+              className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
             >
-              FlickMart
+              Flick<span className="text-[#FF6B00]">Mart</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-8 md:flex">
-            <Link
-              href="/blog"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
-                isDark ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              Blog
-            </Link>
-            <Link
-              href="#"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
-                isDark ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              Projects
-            </Link>
-            <Link
-              href="#"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
-                isDark ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              About
-            </Link>
-            <Link
-              href="#"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
-                isDark ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              Newsletter
-            </Link>
-          </nav>
+          <div className="hidden md:flex gap-4">
+            {/* Desktop Navigation */}
+            <nav className="hidden items-center gap-8 md:flex">
+              <Link
+                href="/blog"
+                className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                Blog
+              </Link>
+              <Link
+                href="#"
+                className={`text-sm transition-colors font-medium  hover:text-[#FF6B00] ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                Projects
+              </Link>
 
-          {/* CTA Button - Desktop */}
-          <div className="hidden md:block">
-            <Link
-              href="#"
-              className="inline-flex items-center rounded-full bg-[#FF6B00] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-[#e65c00]"
-            >
-              Visit Flickmart
-            </Link>
+              <Link
+                href="#"
+                className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                About
+              </Link>
+              <Link
+                href="#"
+                className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                Newsletter
+              </Link>
+
+              <Link
+                href="#"
+                className="inline-flex items-center rounded-md bg-[#FF6B00] px-5 py-4 text-sm font-medium text-white transition-colors hover:bg-[#e65c00]"
+              >
+                Visit Flickmart
+              </Link>
+            </nav>
           </div>
 
           {/* Mobile menu button */}
