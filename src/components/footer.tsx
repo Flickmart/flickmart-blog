@@ -1,4 +1,7 @@
+"use client";
+
 import { Facebook, Instagram, Youtube } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -10,16 +13,20 @@ export function Footer() {
           {/* Left Zone - Branding */}
           <div className="flex flex-col">
             {/* Logo */}
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded bg-[#FF6600]">
-                <span className="font-bold font-switzer-bold text-white text-xl">
-                  F
-                </span>
+            <Link className="flex items-center gap-2" href="/">
+              <div className="flex h-8 w-8 items-center justify-center">
+                <Image
+                  alt="FlickMart Logo"
+                  className="font-bold text-lg text-white"
+                  height={60}
+                  src="/Logo.svg"
+                  width={60}
+                />
               </div>
-              <span className="font-bold font-switzer-bold text-xl">
-                FlickMart
+              <span className="font-bold text-2xl text-white">
+                Flick<span className="text-[#FF6B00]">Mart</span>
               </span>
-            </div>
+            </Link>
 
             {/* Tagline */}
             <p className="font-switzer-regular text-gray-300 text-sm">
@@ -33,7 +40,7 @@ export function Footer() {
             <ul className="mb-6 space-y-2">
               <li>
                 <Link
-                  className="font-switzer-regular text-sm text-white transition-colors hover:text-[#FF6600]"
+                  className="font-switzer-regular text-gray-400 text-sm transition-colors hover:text-[#FF6600]"
                   href="/"
                 >
                   Home
@@ -41,7 +48,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  className="font-switzer-regular text-sm text-white transition-colors hover:text-[#FF6600]"
+                  className="font-switzer-regular text-gray-400 text-sm transition-colors hover:text-[#FF6600]"
                   href="/about"
                 >
                   About
@@ -49,7 +56,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  className="font-switzer-regular text-sm text-white transition-colors hover:text-[#FF6600]"
+                  className="font-switzer-regular text-gray-400 text-sm transition-colors hover:text-[#FF6600]"
                   href="/newsroom"
                 >
                   News room
@@ -57,7 +64,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  className="font-switzer-regular text-sm text-white transition-colors hover:text-[#FF6600]"
+                  className="font-switzer-regular text-gray-400 text-sm transition-colors hover:text-[#FF6600]"
                   href="/blog"
                 >
                   Blogs
@@ -70,7 +77,7 @@ export function Footer() {
               <span className="font-semibold font-switzer-bold text-sm">
                 Email :
               </span>{" "}
-              <span className="font-switzer-regular text-sm text-white">
+              <span className="font-switzer-regular text-gray-400 text-sm">
                 flickmart#12@gmail.com
               </span>
             </div>
@@ -79,12 +86,12 @@ export function Footer() {
           {/* Right Zone - Newsletter */}
           <div>
             <h4 className="mb-1 font-semibold font-switzer-bold text-base">
-              subscribe to our newsletter
+              Subscribe to our newsletter
             </h4>
-            <p className="mb-1 font-switzer-regular text-sm text-white">
+            <p className="mb-1 font-switzer-regular text-gray-400 text-sm">
               Don't get left in the dust
             </p>
-            <p className="mb-4 font-switzer-regular text-gray-300 text-sm">
+            <p className="mb-4 font-italic font-switzer-regular text-gray-300 text-sm">
               Fresh features, secret sales, and news you actually want delivered
               in a flick.
             </p>
