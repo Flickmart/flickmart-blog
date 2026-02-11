@@ -27,11 +27,11 @@ export function FlickMartHome() {
           </h2>
 
           {recentBlogs.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 md:grid-rows-2">
+            <div className="grid gap-6 md:grid-cols-2 md:grid-rows-2 ">
               <FlickMartBlogCard
                 blog={recentBlogs[0]}
                 key={recentBlogs[0]._id}
-                className="md:row-span-2"
+                className="md:row-span-2 max-h-[450px]"
               />
               {recentBlogs.slice(1).map((blog) => (
                 <RecentBlogCard blog={blog} key={blog._id} />
@@ -100,7 +100,7 @@ const RecentBlogCard = ({ blog }: { blog: BlogPost }) => {
       {/* Image - Left side */}
       {imageUrl && (
         <div
-          className={`relative overflow-hidden w-1/3 ${
+          className={`relative overflow-hidden w-1/2 h-[200px] ${
             isDark ? "bg-gray-800" : "bg-gray-100"
           }`}
         >
@@ -113,7 +113,7 @@ const RecentBlogCard = ({ blog }: { blog: BlogPost }) => {
       )}
 
       {/* Content - Right side */}
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-4 h-[200px]">
         {/* Title */}
         <h3
           className={`mb-2 line-clamp-2 text-lg font-bold transition-colors group-hover:text-[#FF6B00] ${
