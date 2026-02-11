@@ -17,7 +17,7 @@ export function FlickMartHeader() {
         isDark ? "border-gray-800" : "border-gray-200"
       } ${isDark ? "bg-gray-900/95" : "bg-white/95"}`}
     >
-      <div className="mx-auto max-w-7xl px-4 lg:py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl  lg:py-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
