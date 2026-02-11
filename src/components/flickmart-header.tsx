@@ -123,46 +123,50 @@ export function FlickMartHeader() {
                   </Link>{" "}
                 </SheetTitle>
               </SheetHeader>
-              <div className="mt-8 space-y-2 *:border-b *:border-b-neutral-700 *:rounded-none">
-                <Link
-                  href="/blog"
-                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="#"
-                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="#"
-                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  About
-                </Link>
-                <Link
-                  href="#"
-                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Newsletter
-                </Link>
+              <div className="flex flex-col justify-between h-3/4">
+                <div className="mt-8 space-y-2 *:border-b *:border-b-neutral-700 *:rounded-none">
+                  <Link
+                    href="/blog"
+                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Blog
+                  </Link>
+                  <Link
+                    href="#"
+                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Projects
+                  </Link>
+                  <Link
+                    href="#"
+                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    About
+                  </Link>
+                  <Link
+                    href="#"
+                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Newsletter
+                  </Link>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <Link
+                    href="https://flickmart.app/"
+                    className="mt-4 block rounded-lg bg-[#FF6B00]  px-4 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#e65c00]"
+                  >
+                    Visit Flickmart
+                  </Link>
+                </div>
               </div>
-              <Link
-                href="https://flickmart.app/"
-                className="mt-4 block rounded-lg bg-[#FF6B00]  px-4 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#e65c00]"
-              >
-                Visit Flickmart
-              </Link>
             </SheetContent>
           </Sheet>
         </div>
