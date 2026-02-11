@@ -45,11 +45,11 @@ body {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
 
-        /* Brand colors */
-        --brand-primary: 6 100% 65%;
+        /* Brand colors - FlickMart Orange #FF6B00 */
+        --brand-primary: 24 100% 50%;
         --brand-secondary: 0 0% 96%;
-        --accent-glow: 6 100% 50%;
-        --accent-color: 6 100% 65%; /* Orange/red for light mode */
+        --accent-glow: 24 100% 50%;
+        --accent-color: 24 100% 50%; /* #FF6B00 Orange for light mode */
 
         /* Semantic background colors */
         --surface-elevated: 0 0% 100%;
@@ -98,11 +98,11 @@ body {
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
 
-        /* Brand colors - dark mode adjustments */
-        --brand-primary: 165 84% 45%; /* Emerald green for dark mode */
+        /* Brand colors - dark mode (still orange for FlickMart branding) */
+        --brand-primary: 24 100% 50%;
         --brand-secondary: 0 0% 15%;
-        --accent-glow: 165 84% 45%;
-        --accent-color: 165 84% 45%; /* Emerald green for dark mode */
+        --accent-glow: 24 100% 50%;
+        --accent-color: 24 100% 50%; /* Keep orange in dark mode */
 
         /* Semantic background colors - dark mode */
         --surface-elevated: 0 0% 5%;

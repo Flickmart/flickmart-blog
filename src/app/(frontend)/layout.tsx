@@ -68,8 +68,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Joseph Ebuka",
-  description: "Software Engineer from Nigeria",
+  title: "FlickMart Blog",
+  description: "Insights, stories, and updates from the FlickMart team.",
 };
 
 export const viewport: Viewport = {
@@ -94,15 +94,15 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${switzer.variable} ${switzerRegular.variable} ${firaCode.variable} ${jetBrainsMono.variable} ${dm.variable} ${futsat.variable} bg-background font-sans antialiased selection:bg-brand-accent selection:text-white dark:bg-background`}
+        className={`${switzer.variable} ${switzerRegular.variable} ${firaCode.variable} ${jetBrainsMono.variable} ${dm.variable} ${futsat.variable} bg-white text-gray-900 antialiased selection:bg-[#FF6B00] selection:text-white`}
         suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           disableTransitionOnChange
           enableSystem
-          storageKey="portfolio-theme"
+          storageKey="flickmart-theme"
         >
           <TOCProvider>
             {children}

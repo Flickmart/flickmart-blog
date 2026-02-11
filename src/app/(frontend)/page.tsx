@@ -1,9 +1,13 @@
-import Blog from "@/components/blog";
+import { FlickMartHeader } from "@/components/flickmart-header";
+import { FlickMartHome } from "@/components/flickmart-home";
+import { CookieBanner } from "@/components/cookie-banner";
 
 export default function Page() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center space-y-8 bg-background font-sans">
-      <Blog />
-    </div>
+    <>
+      <FlickMartHeader />
+      <FlickMartHome />
+      <CookieBanner />
+    </>
   );
 }

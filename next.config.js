@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["egyhvri8i8.ufs.sh", "i.scdn.co", "cdn.sanity.io"],
+    domains: [
+      "egyhvri8i8.ufs.sh",
+      "i.scdn.co",
+      "cdn.sanity.io",
+      "images.unsplash.com",
+    ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
