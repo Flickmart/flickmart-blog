@@ -26,7 +26,7 @@ export function FlickMartHome() {
           </h2>
 
           {recentBlogs.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 md:grid-rows-2 ">
+            <div className="gap-6 grid md:grid-cols-2 md:grid-rows-2 ">
               <FlickMartBlogCard
                 blog={recentBlogs[0]}
                 key={recentBlogs[0]._id}

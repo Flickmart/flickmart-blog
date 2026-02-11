@@ -28,7 +28,7 @@ export function FlickMartHeader() {
           <Link href="/" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center ">
               <Image
-                src="/logo.svg"
+                src="/Logo.svg"
                 alt="FlickMart Logo"
                 className="text-lg font-bold text-white"
                 width={60}
@@ -108,7 +108,7 @@ export function FlickMartHeader() {
                   <Link href="/" className="flex items-center gap-2">
                     <div className="flex h-8 w-8 items-center justify-center ">
                       <Image
-                        src="/logo.svg"
+                        src="/Logo.svg"
                         alt="FlickMart Logo"
                         className="text-lg font-bold text-white"
                         width={60}
