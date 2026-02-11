@@ -39,7 +39,7 @@ export function FlickMartBlogCard({
   return (
     <Link
       href={`/blog/${blog.slug}`}
-      className={`group flex flex-col overflow-hidden rounded-lg border transition-all duration-300 hover:shadow-lg ${
+      className={`group flex flex-col overflow-hidden rounded-lg border transition-all duration-300 ${
         isDark ? "border-gray-800 bg-gray-900" : "border-gray-200 bg-white"
       } ${className}`}
     >

@@ -34,7 +34,16 @@ export function FlickMartHome() {
                 className="md:row-span-2 max-h-[450px]"
               />
               {recentBlogs.slice(1).map((blog) => (
-                <RecentBlogCard blog={blog} key={blog._id} />
+                <div key={blog._id} className="hidden md:block">
+                  <RecentBlogCard blog={blog} />
+                </div>
+              ))}
+              {recentBlogs.slice(1).map((blog) => (
+                <FlickMartBlogCard
+                  blog={blog}
+                  key={blog._id}
+                  className="md:hidden"
+                />
               ))}
             </div>
           ) : (
