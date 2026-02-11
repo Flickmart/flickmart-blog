@@ -10,6 +10,30 @@
           }
         }
       }
+    },
+    "biome": {
+      "settings": {
+        "javascript": {
+          "format": {
+            "enabled": true
+          }
+        },
+        "typescript": {
+          "format": {
+            "enabled": true
+          }
+        },
+        "json": {
+          "format": {
+            "enabled": true
+          }
+        },
+        "css": {
+          "format": {
+            "enabled": true
+          }
+        }
+      }
     }
   },
   "languages": {
@@ -44,6 +68,27 @@
       "code_actions_on_format": {
         "source.fixAll.biome": true,
         "source.organizeImports.biome": true
+      }
+    },
+    "CSS": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    },
+    "JSON": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    },
+    "JSONC": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
       }
     }
   }
