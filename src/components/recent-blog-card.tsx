@@ -1,21 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
 import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/types";
 import { useTheme } from "next-themes";
 
-interface FlickMartBlogCardProps {
+interface RecentBlogCardProps {
   blog: BlogPost;
-  size?: "default" | "large";
-  className?: string;
 }
 
-export function FlickMartBlogCard({
-  blog,
-  size = "default",
-  className = "",
-}: FlickMartBlogCardProps) {
-  const isLarge = size === "large";
+export function RecentBlogCard({ blog }: RecentBlogCardProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -26,8 +19,8 @@ export function FlickMartBlogCard({
     }
     if (blog.mainImage) {
       return urlFor(blog.mainImage)
-        .width(isLarge ? 600 : 400)
-        .height(isLarge ? 375 : 250)
+        .width(400)
+        .height(250)
         .quality(90)
         .url();
     }
@@ -37,32 +30,31 @@ export function FlickMartBlogCard({
   const imageUrl = getImageUrl();
 
   return (
-    <Link
-      href={`/blog/${blog.slug}`}
-      className={`group flex flex-col overflow-hidden rounded-none transition-all duration-300 ${
+    <div
+      className={`group flex overflow-hidden rounded-lg ${
         isDark ? "bg-gray-900" : "bg-white"
-      } ${className}`}
+      }`}
     >
-      {/* Image */}
+      {/* Image - Left side */}
       {imageUrl && (
         <div
-          className={`relative overflow-hidden ${isDark ? "bg-gray-800" : "bg-gray-100"} ${isLarge ? "aspect-[16/10]" : "aspect-[16/10]"}`}
+          className={`relative overflow-hidden w-1/2 h-[200px] ${
+            isDark ? "bg-gray-800" : "bg-gray-100"
+          }`}
         >
-          <Image
+          <img
+            src={imageUrl}
             alt={blog.mainImage?.alt || blog.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            src={imageUrl}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
       )}
 
-      {/* Content */}
-      <div className="flex flex-1 flex-col p-5">
+      {/* Content - Right side */}
+      <div className="flex flex-1 flex-col p-4 justify-center">
         {/* Title */}
         <h3
-          className={`mb-3 line-clamp-2 text-xl font-bold transition-colors group-hover:text-[#FF6B00] ${
+          className={`mb-2 line-clamp-2 text-lg font-bold transition-colors group-hover:text-[#FF6B00] ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
@@ -71,7 +63,7 @@ export function FlickMartBlogCard({
 
         {/* Author/Date */}
         <div
-          className={`mb-3 text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}
+          className={`mb-2 text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}
         >
           {blog.author?.name && (
             <span className="font-medium">{blog.author.name}</span>
@@ -93,7 +85,7 @@ export function FlickMartBlogCard({
         {/* Excerpt */}
         {blog.excerpt && (
           <p
-            className={`mb-4 line-clamp-2 flex-1 text-sm leading-relaxed ${
+            className={`mb-3 line-clamp-2 text-sm leading-relaxed ${
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
@@ -103,11 +95,11 @@ export function FlickMartBlogCard({
 
         {/* Read More Button */}
         <div className="mt-auto">
-          <span className="inline-flex items-center rounded-full bg-[#FF6B00] px-4 py-2 text-sm font-medium text-white transition-colors group-hover:bg-[#e65c00]">
+          <span className="inline-flex items-center rounded-full bg-[#FF6B00] px-3 py-1.5 text-xs font-medium text-white transition-colors group-hover:bg-[#e65c00]">
             Read more
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
