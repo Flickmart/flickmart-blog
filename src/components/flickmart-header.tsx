@@ -105,13 +105,28 @@ export function FlickMartHeader() {
             >
               <SheetHeader>
                 <SheetTitle className={isDark ? "text-white" : "text-gray-900"}>
-                  Menu
+                  <Link href="/" className="flex items-center gap-2">
+                    <div className="flex h-8 w-8 items-center justify-center ">
+                      <Image
+                        src="/logo.svg"
+                        alt="FlickMart Logo"
+                        className="text-lg font-bold text-white"
+                        width={60}
+                        height={60}
+                      />
+                    </div>
+                    <span
+                      className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
+                    >
+                      Flick<span className="text-[#FF6B00]">Mart</span>
+                    </span>
+                  </Link>{" "}
                 </SheetTitle>
               </SheetHeader>
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 space-y-2 *:border-b *:border-b-neutral-700 *:rounded-none">
                 <Link
                   href="/blog"
-                  className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
                     isDark ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
@@ -119,7 +134,7 @@ export function FlickMartHeader() {
                 </Link>
                 <Link
                   href="#"
-                  className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
                     isDark ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
@@ -127,7 +142,7 @@ export function FlickMartHeader() {
                 </Link>
                 <Link
                   href="#"
-                  className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
                     isDark ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
@@ -135,19 +150,19 @@ export function FlickMartHeader() {
                 </Link>
                 <Link
                   href="#"
-                  className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                  className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
                     isDark ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
                   Newsletter
                 </Link>
-                <Link
-                  href="https://flickmart.app/"
-                  className="mt-4 block rounded-lg bg-[#FF6B00] px-4 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#e65c00]"
-                >
-                  Visit Flickmart
-                </Link>
               </div>
+              <Link
+                href="https://flickmart.app/"
+                className="mt-4 block rounded-lg bg-[#FF6B00]  px-4 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#e65c00]"
+              >
+                Visit Flickmart
+              </Link>
             </SheetContent>
           </Sheet>
         </div>

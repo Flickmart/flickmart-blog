@@ -13,34 +13,6 @@ export function FlickMartHome() {
 
   return (
     <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
-      {/* Hero Section */}
-      <section
-        className={`border-b px-4 py-16 sm:px-6 lg:px-8 ${
-          isDark ? "border-gray-800 bg-gray-900" : "border-gray-200 bg-gray-50"
-        }`}
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1
-              className={`text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Welcome to <span className="text-[#FF6B00]">FlickMart</span> Blog
-            </h1>
-            <p
-              className={`mt-6 text-lg leading-8 ${
-                isDark ? "text-gray-400" : "text-gray-600"
-              }`}
-            >
-              Insights, stories, and updates from the FlickMart team. Discover
-              our journey, learn from our experiences, and stay updated with the
-              latest news.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Recent Blog Posts */}
       <section className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
