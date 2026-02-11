@@ -32,7 +32,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       {
         rootMargin: "-10% 0px -80% 0px",
         threshold: 0,
-      },
+      }
     );
 
     let observedCount = 0;
@@ -59,7 +59,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     } else {
       console.log(
         "TOC: Element not found! Available IDs:",
-        Array.from(document.querySelectorAll("[id]")).map((el) => el.id),
+        Array.from(document.querySelectorAll("[id]")).map((el) => el.id)
       );
     }
   };
@@ -70,7 +70,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
   return (
     <nav aria-label="Table of contents" className="space-y-3">
-      <h3 className="font-bold font-futsat dark:text-white text-xl lg:text-2xl">
+      <h3 className="font-bold font-futsat text-xl lg:text-2xl dark:text-white">
         Table of Contents
       </h3>
       <div className="space-y-2">
@@ -79,15 +79,15 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             aria-current={activeId === heading.id ? "location" : undefined}
             className={cn(
               "block w-full text-left font-switzerRegular text-sm transition-colors",
-              "dark:hover:text-white hover:text-black",
+              "hover:text-black dark:hover:text-white",
               activeId === heading.id
-                ? "font-medium dark:text-white text-black"
+                ? "font-medium text-black dark:text-white"
                 : "text-[#A1A1AA]",
               heading.level === 2 && "pl-0",
               heading.level === 3 && "pl-4",
               heading.level === 4 && "pl-8",
               heading.level === 5 && "pl-12",
-              heading.level === 6 && "pl-16",
+              heading.level === 6 && "pl-16"
             )}
             key={heading.id}
             onClick={() => scrollToSection(heading.id)}
@@ -95,7 +95,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           >
             {heading.text}{" "}
             {activeId === heading.id && (
-              <span className="ml-1 rounded-full border border-brand-primary/20 text-brand-accent p-2 text-emerald-400 bg-brand-primary/10 text-xs">
+              <span className="ml-1 rounded-full border border-brand-primary/20 bg-brand-primary/10 p-2 text-brand-accent text-emerald-400 text-xs">
                 current
               </span>
             )}

@@ -3,9 +3,10 @@ import type { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { coldarkCold } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { useTheme } from "next-themes";
+import {
+  coldarkCold,
+  coldarkDark,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import { urlFor } from "@/lib/sanity";
 import { AutolinkHeading } from "./autolink-heading";
 import { VideoEmbed } from "./video-embed";
@@ -21,12 +22,12 @@ export const components = (theme: string): PortableTextComponents => ({
         <div className="relative z-1 my-4 w-full">
           <Image
             alt={value.alt || "Placeholder image"}
-            className="rounded-lg w-full h-auto"
-            width={1200}
+            className="h-auto w-full rounded-lg"
             height={0}
-            style={{ height: "auto" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
             src={urlFor(value).width(1200).quality(90).url()}
+            style={{ height: "auto" }}
+            width={1200}
           />
           {value.caption && (
             <p className="mt-2 text-center text-muted-foreground text-sm">
@@ -120,14 +121,14 @@ export const components = (theme: string): PortableTextComponents => ({
     ),
     h4: (props: any) => (
       <AutolinkHeading
-        className="mt-6 mb-4 font-bold font-futsat text-lg text-foreground lg:text-xl"
+        className="mt-6 mb-4 font-bold font-futsat text-foreground text-lg lg:text-xl"
         level={4}
       >
         {props.children}
       </AutolinkHeading>
     ),
     blockquote: (props: any) => (
-      <blockquote className="my-4 rounded-r border-l-[6px] bg-muted dark:border-l-accent p-4 pl-4 text-sm italic border-border">
+      <blockquote className="my-4 rounded-r border-border border-l-[6px] bg-muted p-4 pl-4 text-sm italic dark:border-l-accent">
         {props.children}
       </blockquote>
     ),

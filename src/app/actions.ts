@@ -1,7 +1,7 @@
 "use server";
 
 import { latestPostsQuery, postQuery, postsQuery } from "@/lib/queries";
-import { client, urlFor } from "@/lib/sanity";
+import { client } from "@/lib/sanity";
 import type { Blog, BlogPost } from "@/lib/types";
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -24,7 +24,9 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 export async function getBlogPost(slug: string): Promise<Blog | null> {
   const post = await client.fetch(postQuery, { slug });
 
-  if (!post) return null;
+  if (!post) {
+    return null;
+  }
 
   return {
     _id: post._id,

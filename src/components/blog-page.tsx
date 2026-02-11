@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getBlogPosts } from "@/app/actions";
+import { VideoEmbed } from "@/components/video-embed";
 import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/types";
-import { VideoEmbed } from "@/components/video-embed";
 
 interface BlogListingProps {
   limit?: number;
@@ -37,7 +37,7 @@ export function BlogListing({ limit = 10 }: BlogListingProps) {
       <div className="flex flex-col">
         {[...Array(3)].map((_, i) => (
           <div
-            className="animate-pulse flex gap-8 border-t border-zinc-800/50 py-10 max-md:flex-col"
+            className="flex animate-pulse gap-8 border-zinc-800/50 border-t py-10 max-md:flex-col"
             key={i}
           >
             <div className="aspect-[2] rounded-lg bg-zinc-700 md:aspect-[1.5] md:max-w-[216px]" />
@@ -47,7 +47,7 @@ export function BlogListing({ limit = 10 }: BlogListingProps) {
                 <div className="mt-3 h-6 w-3/4 rounded bg-zinc-700" />
                 <div className="mt-2 h-4 w-full rounded bg-zinc-700" />
               </div>
-              <div className="mt-4 flex justify-between gap-6 xs:mt-6 xs:items-center">
+              <div className="mt-4 xs:mt-6 flex xs:items-center justify-between gap-6">
                 <div className="h-4 w-20 rounded bg-zinc-700" />
                 <div className="flex gap-2">
                   <div className="h-6 w-12 rounded bg-zinc-700" />
@@ -84,7 +84,7 @@ export function BlogListing({ limit = 10 }: BlogListingProps) {
 function BlogCard({ blog }: { blog: BlogPost }) {
   return (
     <Link
-      className="group flex gap-8 border-t border-border py-10 transition-all duration-300 max-md:flex-col"
+      className="group flex gap-8 border-border border-t py-10 transition-all duration-300 max-md:flex-col"
       href={`/blog/${blog.slug}`}
     >
       {/* Video or Image Thumbnail */}
@@ -92,12 +92,12 @@ function BlogCard({ blog }: { blog: BlogPost }) {
         <div className="relative aspect-[2] overflow-hidden rounded-lg md:aspect-[1.5] md:max-w-[216px]">
           <VideoEmbed
             autoplay={true}
+            className="h-full w-full"
             controls={false}
             loop={true}
             provider={blog.mainVideo.provider}
             title={blog.mainVideo.title}
             url={blog.mainVideo.url}
-            className="h-full w-full"
           />
         </div>
       ) : blog.mainImage ? (
@@ -120,7 +120,7 @@ function BlogCard({ blog }: { blog: BlogPost }) {
       <div className="flex w-full flex-col justify-between">
         <div className="font-light">
           {/* Date and Read Time */}
-          <div className="mb-3 flex items-center gap-4 text-text-muted text-sm">
+          <div className="mb-3 flex items-center gap-4 text-sm text-text-muted">
             <span>
               {new Date(blog.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -132,12 +132,12 @@ function BlogCard({ blog }: { blog: BlogPost }) {
           </div>
 
           {/* Title */}
-          <h3 className="font-display mt-3 line-clamp-2 text-lg font-futsat font-semibold leading-[1.4] text-foreground">
+          <h3 className="mt-3 line-clamp-2 font-display font-futsat font-semibold text-foreground text-lg leading-[1.4]">
             {blog.title}
           </h3>
 
           {/* Description */}
-          <p className="mt-2 line-clamp-2 text-text-muted max-md:text-sm font-futsat">
+          <p className="mt-2 line-clamp-2 font-futsat text-text-muted max-md:text-sm">
             {blog.excerpt}
           </p>
         </div>
@@ -145,7 +145,7 @@ function BlogCard({ blog }: { blog: BlogPost }) {
         {/* Bottom Section */}
         <div className="mt-4 flex justify-between gap-6 max-md:flex-col-reverse md:mt-6 md:items-center">
           {/* Read More Link */}
-          <span className="min-w-max text-sm text-brand-primary transition-all duration-300 group-hover:text-brand-primary/80">
+          <span className="min-w-max text-brand-primary text-sm transition-all duration-300 group-hover:text-brand-primary/80">
             Read more
             <ArrowRight className="ml-1 inline-block h-4 w-4 transition-all duration-300 group-hover:ml-2" />
           </span>
@@ -155,7 +155,7 @@ function BlogCard({ blog }: { blog: BlogPost }) {
             <ul className="flex flex-wrap gap-2">
               {blog.tags.slice(0, 3).map((tag) => (
                 <li
-                  className="rounded bg-surface-interactive px-2 py-1 font-mono text-xs tracking-tight text-text-muted"
+                  className="rounded bg-surface-interactive px-2 py-1 font-mono text-text-muted text-xs tracking-tight"
                   key={tag}
                 >
                   {tag}

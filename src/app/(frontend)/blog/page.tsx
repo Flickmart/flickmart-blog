@@ -1,6 +1,6 @@
-import { FlickMartHeader } from "@/components/flickmart-header";
 import { BlogPageContent } from "@/components/blog-page-content";
 import { CookieBanner } from "@/components/cookie-banner";
+import { FlickMartHeader } from "@/components/flickmart-header";
 import { demoBlogs } from "@/lib/demo-blogs";
 
 export default function BlogPage() {

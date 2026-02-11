@@ -3,7 +3,6 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

@@ -1,8 +1,8 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/types";
-import { useTheme } from "next-themes";
 
 interface RecentBlogCardProps {
   blog: BlogPost;
@@ -18,11 +18,7 @@ export function RecentBlogCard({ blog }: RecentBlogCardProps) {
       return blog.mainImage.asset.url;
     }
     if (blog.mainImage) {
-      return urlFor(blog.mainImage)
-        .width(400)
-        .height(250)
-        .quality(90)
-        .url();
+      return urlFor(blog.mainImage).width(400).height(250).quality(90).url();
     }
     return null;
   };
@@ -38,23 +34,23 @@ export function RecentBlogCard({ blog }: RecentBlogCardProps) {
       {/* Image - Left side */}
       {imageUrl && (
         <div
-          className={`relative overflow-hidden w-1/2 h-[200px] ${
+          className={`relative h-[200px] w-1/2 overflow-hidden ${
             isDark ? "bg-gray-800" : "bg-gray-100"
           }`}
         >
           <img
-            src={imageUrl}
             alt={blog.mainImage?.alt || blog.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            src={imageUrl}
           />
         </div>
       )}
 
       {/* Content - Right side */}
-      <div className="flex flex-1 flex-col p-4 justify-center">
+      <div className="flex flex-1 flex-col justify-center p-4">
         {/* Title */}
         <h3
-          className={`mb-2 line-clamp-2 text-lg font-bold transition-colors group-hover:text-[#FF6B00] ${
+          className={`mb-2 line-clamp-2 font-bold text-lg transition-colors group-hover:text-[#FF6B00] ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
@@ -95,7 +91,7 @@ export function RecentBlogCard({ blog }: RecentBlogCardProps) {
 
         {/* Read More Button */}
         <div className="mt-auto">
-          <span className="inline-flex items-center rounded-full bg-[#FF6B00] px-3 py-1.5 text-xs font-medium text-white transition-colors group-hover:bg-[#e65c00]">
+          <span className="inline-flex items-center rounded-full bg-[#FF6B00] px-3 py-1.5 font-medium text-white text-xs transition-colors group-hover:bg-[#e65c00]">
             Read more
           </span>
         </div>

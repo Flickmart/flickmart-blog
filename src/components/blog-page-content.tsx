@@ -1,8 +1,8 @@
 "use client";
 
-import { FlickMartBlogCard } from "@/components/flickmart-blog-card";
-import { demoBlogs } from "@/lib/demo-blogs";
 import { useTheme } from "next-themes";
+import { FlickMartBlogCard } from "@/components/flickmart-blog-card";
+import type { demoBlogs } from "@/lib/demo-blogs";
 
 export function BlogPageContent({ blogs }: { blogs: typeof demoBlogs }) {
   const { theme } = useTheme();
@@ -18,7 +18,7 @@ export function BlogPageContent({ blogs }: { blogs: typeof demoBlogs }) {
         {/* Page Header */}
         <div className="mb-12 text-center sm:text-left">
           <h1
-            className={`text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl ${
+            className={`font-bold text-3xl tracking-tight sm:text-4xl md:text-5xl ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >

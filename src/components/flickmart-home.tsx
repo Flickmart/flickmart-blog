@@ -1,9 +1,9 @@
 "use client";
 
+import { useTheme } from "next-themes";
+import { demoBlogs } from "@/lib/demo-blogs";
 import { FlickMartBlogCard } from "./flickmart-blog-card";
 import { RecentBlogCard } from "./recent-blog-card";
-import { demoBlogs } from "@/lib/demo-blogs";
-import { useTheme } from "next-themes";
 
 export function FlickMartHome() {
   const { theme } = useTheme();
@@ -18,7 +18,7 @@ export function FlickMartHome() {
       <section className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <h2
-            className={`mb-8 text-2xl font-bold ${
+            className={`mb-8 font-bold text-2xl ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -26,22 +26,22 @@ export function FlickMartHome() {
           </h2>
 
           {recentBlogs.length > 0 ? (
-            <div className="gap-6 grid md:grid-cols-2 md:grid-rows-2 ">
+            <div className="grid gap-6 md:grid-cols-2 md:grid-rows-2">
               <FlickMartBlogCard
                 blog={recentBlogs[0]}
+                className="max-h-[450px] md:row-span-2"
                 key={recentBlogs[0]._id}
-                className="md:row-span-2 max-h-[450px]"
               />
               {recentBlogs.slice(1).map((blog) => (
-                <div key={blog._id} className="hidden md:block">
+                <div className="hidden md:block" key={blog._id}>
                   <RecentBlogCard blog={blog} />
                 </div>
               ))}
               {recentBlogs.slice(1).map((blog) => (
                 <FlickMartBlogCard
                   blog={blog}
-                  key={blog._id}
                   className="md:hidden"
+                  key={blog._id}
                 />
               ))}
             </div>
@@ -64,7 +64,7 @@ export function FlickMartHome() {
         >
           <div className="mx-auto max-w-7xl">
             <h2
-              className={`mb-8 text-2xl font-bold ${
+              className={`mb-8 font-bold text-2xl ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >

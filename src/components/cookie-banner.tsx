@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,11 +28,13 @@ export function CookieBanner() {
     setIsVisible(false);
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 border-t px-4 py-4 shadow-lg sm:px-6 ${
+      className={`fixed right-0 bottom-0 left-0 z-50 border-t px-4 py-4 shadow-lg sm:px-6 ${
         isDark ? "border-gray-800 bg-gray-900" : "border-gray-200 bg-white"
       }`}
     >
@@ -47,8 +49,8 @@ export function CookieBanner() {
             We use cookies to improve your experience. By continuing to visit
             this site you agree to our use of cookies.{" "}
             <button
-              onClick={() => setShowSettings(!showSettings)}
               className="text-[#FF6B00] underline hover:no-underline"
+              onClick={() => setShowSettings(!showSettings)}
             >
               settings
             </button>
@@ -57,29 +59,29 @@ export function CookieBanner() {
           {/* Buttons */}
           <div className="flex items-center gap-3">
             <button
-              onClick={handleDecline}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full border px-4 py-2 font-medium text-sm transition-colors ${
                 isDark
                   ? "border-gray-700 text-gray-300 hover:bg-gray-800"
                   : "border-gray-300 text-gray-700 hover:bg-gray-50"
               }`}
+              onClick={handleDecline}
             >
               Do not allow cookies
             </button>
             <button
+              className="rounded-full bg-[#FF6B00] px-4 py-2 font-medium text-sm text-white transition-colors hover:bg-[#e65c00]"
               onClick={handleAccept}
-              className="rounded-full bg-[#FF6B00] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#e65c00]"
             >
               Allow all cookies
             </button>
             <button
-              onClick={() => setIsVisible(false)}
+              aria-label="Close"
               className={`ml-2 transition-colors ${
                 isDark
                   ? "text-gray-500 hover:text-gray-300"
                   : "text-gray-400 hover:text-gray-600"
               }`}
-              aria-label="Close"
+              onClick={() => setIsVisible(false)}
             >
               <X className="h-5 w-5" />
             </button>
@@ -94,7 +96,7 @@ export function CookieBanner() {
             }`}
           >
             <p
-              className={`mb-3 text-sm font-medium ${
+              className={`mb-3 font-medium text-sm ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -103,9 +105,9 @@ export function CookieBanner() {
             <div className="space-y-2">
               <label className="flex items-center gap-3">
                 <input
-                  type="checkbox"
-                  defaultChecked
                   className="h-4 w-4 rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00] dark:border-gray-700"
+                  defaultChecked
+                  type="checkbox"
                 />
                 <span
                   className={`text-sm ${
@@ -117,9 +119,9 @@ export function CookieBanner() {
               </label>
               <label className="flex items-center gap-3">
                 <input
-                  type="checkbox"
-                  defaultChecked
                   className="h-4 w-4 rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00] dark:border-gray-700"
+                  defaultChecked
+                  type="checkbox"
                 />
                 <span
                   className={`text-sm ${
@@ -131,8 +133,8 @@ export function CookieBanner() {
               </label>
               <label className="flex items-center gap-3">
                 <input
-                  type="checkbox"
                   className="h-4 w-4 rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00] dark:border-gray-700"
+                  type="checkbox"
                 />
                 <span
                   className={`text-sm ${

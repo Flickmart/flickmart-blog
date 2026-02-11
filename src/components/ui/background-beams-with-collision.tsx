@@ -73,14 +73,14 @@ export const BackgroundBeamsWithCollision = React.memo(
           className: "h-6",
         },
       ],
-      [],
+      []
     );
 
     return (
       <div
         className={cn(
-          "relative flex md:h-96 w-full items-center justify-center overflow-hidden md:h-[40rem]",
-          className,
+          "relative flex w-full items-center justify-center overflow-hidden md:h-96 md:h-[40rem]",
+          className
         )}
         ref={parentRef}
       >
@@ -104,7 +104,7 @@ export const BackgroundBeamsWithCollision = React.memo(
         />
       </div>
     );
-  },
+  }
 );
 
 BackgroundBeamsWithCollision.displayName = "BackgroundBeamsWithCollision";
@@ -169,7 +169,9 @@ const CollisionMechanism = React.memo(
     }, [checkCollision]);
 
     useEffect(() => {
-      if (!(collision.detected && collision.coordinates)) return;
+      if (!(collision.detected && collision.coordinates)) {
+        return;
+      }
 
       const resetTimer = setTimeout(() => {
         setCollision({ detected: false, coordinates: null });
@@ -201,7 +203,7 @@ const CollisionMechanism = React.memo(
           repeatDelay: beamOptions.repeatDelay || 0,
         },
       }),
-      [beamOptions],
+      [beamOptions]
     );
 
     return (
@@ -212,7 +214,7 @@ const CollisionMechanism = React.memo(
           {...animationProps}
           className={cn(
             "absolute top-20 left-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
-            beamOptions.className,
+            beamOptions.className
           )}
         />
         <AnimatePresence mode="wait">
@@ -229,7 +231,7 @@ const CollisionMechanism = React.memo(
         </AnimatePresence>
       </>
     );
-  }),
+  })
 );
 
 CollisionMechanism.displayName = "CollisionMechanism";
@@ -245,14 +247,14 @@ const Explosion = React.memo(
           directionX: Math.floor(Math.random() * 80 - 40),
           directionY: Math.floor(Math.random() * -50 - 10),
         })),
-      [],
+      []
     );
 
     return (
       <div {...props} className={cn("absolute z-50 h-2 w-2", props.className)}>
         <motion.div
           animate={{ opacity: 1 }}
-          className="-inset-x-10 absolute top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"
+          className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"
           exit={{ opacity: 0 }}
           initial={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -275,7 +277,7 @@ const Explosion = React.memo(
         ))}
       </div>
     );
-  },
+  }
 );
 
 Explosion.displayName = "Explosion";

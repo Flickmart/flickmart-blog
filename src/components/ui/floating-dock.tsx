@@ -188,7 +188,7 @@ export function AppDock() {
           {showTOC && tocHeadings.length > 0 && (
             <motion.div
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              className="overflow-hidden rounded-t-3xl border border-b-0 bg-background/90 p-6 backdrop-blur-md border-border"
+              className="overflow-hidden rounded-t-3xl border border-border border-b-0 bg-background/90 p-6 backdrop-blur-md"
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               ref={tocRef}
@@ -209,10 +209,10 @@ export function AppDock() {
         <TooltipProvider>
           <Dock
             className={cn(
-              "mt-0 gap-1 bg-background/90 backdrop-blur-md border border-border",
+              "mt-0 gap-1 border border-border bg-background/90 backdrop-blur-md",
               showTOC
                 ? "rounded-t-none rounded-b-2xl border-t-0"
-                : "rounded-3xl",
+                : "rounded-3xl"
             )}
             direction="middle"
             ref={dockRef}
@@ -222,7 +222,7 @@ export function AppDock() {
                 <TooltipTrigger asChild>
                   <Button
                     className={cn(
-                      "h-12 rounded-full bg-brand-primary/10 px-4 py-2 text-brand-primary text-sm hover:bg-brand-primary/20 border border-brand-primary/20",
+                      "h-12 rounded-full border border-brand-primary/20 bg-brand-primary/10 px-4 py-2 text-brand-primary text-sm hover:bg-brand-primary/20"
                     )}
                     onClick={toggleTOC}
                     variant="ghost"
@@ -250,7 +250,7 @@ export function AppDock() {
                           className={cn(
                             buttonVariants({ variant: "ghost", size: "icon" }),
                             "rounded-full md:size-12",
-                            isActive && "bg-accent",
+                            isActive && "bg-accent"
                           )}
                           href={item.href}
                         >
@@ -283,7 +283,7 @@ export function AppDock() {
                         aria-label={social.name}
                         className={cn(
                           buttonVariants({ variant: "ghost", size: "icon" }),
-                          "size-6 rounded-full md:size-12",
+                          "size-6 rounded-full md:size-12"
                         )}
                         href={social.url}
                       >

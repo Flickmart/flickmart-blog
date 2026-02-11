@@ -6,7 +6,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-15T10:00:00Z",
     title: "UX review presentations",
     slug: "ux-review-presentations",
-    excerpt: "How to create compelling UX review presentations that communicate your design decisions effectively to stakeholders and get buy-in for your ideas.",
+    excerpt:
+      "How to create compelling UX review presentations that communicate your design decisions effectively to stakeholders and get buy-in for your ideas.",
     publishedAt: "2025-01-10T00:00:00Z",
     readTime: "5",
     author: {
@@ -29,7 +30,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-14T10:00:00Z",
     title: "Migrating to Linear 101",
     slug: "migrating-to-linear-101",
-    excerpt: "A comprehensive guide on how to migrate your team's workflow from Jira to Linear. Learn about the benefits, challenges, and step-by-step process.",
+    excerpt:
+      "A comprehensive guide on how to migrate your team's workflow from Jira to Linear. Learn about the benefits, challenges, and step-by-step process.",
     publishedAt: "2025-01-08T00:00:00Z",
     readTime: "8",
     author: {
@@ -52,7 +54,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-13T10:00:00Z",
     title: "The impact of climate change",
     slug: "impact-of-climate-change",
-    excerpt: "Exploring the latest research on climate change and its effects on global ecosystems, communities, and what we can do to make a difference.",
+    excerpt:
+      "Exploring the latest research on climate change and its effects on global ecosystems, communities, and what we can do to make a difference.",
     publishedAt: "2025-01-05T00:00:00Z",
     readTime: "6",
     author: {
@@ -75,7 +78,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-12T10:00:00Z",
     title: "Building remote teams",
     slug: "building-remote-teams",
-    excerpt: "Lessons learned from building and managing distributed teams across different time zones. Discover the tools and practices that work best.",
+    excerpt:
+      "Lessons learned from building and managing distributed teams across different time zones. Discover the tools and practices that work best.",
     publishedAt: "2025-01-03T00:00:00Z",
     readTime: "7",
     author: {
@@ -98,7 +102,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-11T10:00:00Z",
     title: "The FlickMart office",
     slug: "flickmart-office-tour",
-    excerpt: "Take a virtual tour of our new FlickMart headquarters. See how we've designed our space to foster creativity, collaboration, and innovation.",
+    excerpt:
+      "Take a virtual tour of our new FlickMart headquarters. See how we've designed our space to foster creativity, collaboration, and innovation.",
     publishedAt: "2025-01-01T00:00:00Z",
     readTime: "4",
     author: {
@@ -121,7 +126,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-10T10:00:00Z",
     title: "Design system updates",
     slug: "design-system-updates",
-    excerpt: "We've completely revamped our design system. Learn about the new components, guidelines, and how it's improving our development workflow.",
+    excerpt:
+      "We've completely revamped our design system. Learn about the new components, guidelines, and how it's improving our development workflow.",
     publishedAt: "2024-12-28T00:00:00Z",
     readTime: "5",
     author: {
@@ -144,7 +150,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-09T10:00:00Z",
     title: "E-commerce trends 2025",
     slug: "ecommerce-trends-2025",
-    excerpt: "Discover the top e-commerce trends shaping the industry in 2025. From AI-powered recommendations to sustainable shopping practices.",
+    excerpt:
+      "Discover the top e-commerce trends shaping the industry in 2025. From AI-powered recommendations to sustainable shopping practices.",
     publishedAt: "2024-12-25T00:00:00Z",
     readTime: "6",
     author: {
@@ -167,7 +174,8 @@ export const demoBlogs: BlogPost[] = [
     _createdAt: "2025-01-08T10:00:00Z",
     title: "Customer success stories",
     slug: "customer-success-stories",
-    excerpt: "Real stories from FlickMart merchants who have grown their businesses using our platform. Learn from their experiences and strategies.",
+    excerpt:
+      "Real stories from FlickMart merchants who have grown their businesses using our platform. Learn from their experiences and strategies.",
     publishedAt: "2024-12-22T00:00:00Z",
     readTime: "5",
     author: {

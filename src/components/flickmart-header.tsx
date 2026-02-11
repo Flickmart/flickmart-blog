@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import {
   Sheet,
@@ -22,21 +22,21 @@ export function FlickMartHeader() {
         isDark ? "border-gray-800" : "border-gray-200"
       } ${isDark ? "bg-gray-900/95" : "bg-white/95"}`}
     >
-      <div className="mx-auto max-w-7xl px-4 lg:py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:py-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center ">
+          <Link className="flex items-center gap-2" href="/">
+            <div className="flex h-8 w-8 items-center justify-center">
               <Image
-                src="/Logo.svg"
                 alt="FlickMart Logo"
-                className="text-lg font-bold text-white"
-                width={60}
+                className="font-bold text-lg text-white"
                 height={60}
+                src="/Logo.svg"
+                width={60}
               />
             </div>
             <span
-              className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
+              className={`font-bold text-2xl ${isDark ? "text-white" : "text-gray-900"}`}
             >
               Flick<span className="text-[#FF6B00]">Mart</span>
             </span>
@@ -45,40 +45,40 @@ export function FlickMartHeader() {
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 md:flex">
             <Link
-              href="/blog"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+              className={`font-medium text-sm transition-colors hover:text-[#FF6B00] ${
                 isDark ? "text-gray-300" : "text-gray-700"
               }`}
+              href="/blog"
             >
               Blog
             </Link>
             <Link
-              href="#"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+              className={`font-medium text-sm transition-colors hover:text-[#FF6B00] ${
                 isDark ? "text-gray-300" : "text-gray-700"
               }`}
+              href="#"
             >
               Projects
             </Link>
             <Link
-              href="#"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+              className={`font-medium text-sm transition-colors hover:text-[#FF6B00] ${
                 isDark ? "text-gray-300" : "text-gray-700"
               }`}
+              href="#"
             >
               About
             </Link>
             <Link
-              href="#"
-              className={`text-sm font-medium transition-colors hover:text-[#FF6B00] ${
+              className={`font-medium text-sm transition-colors hover:text-[#FF6B00] ${
                 isDark ? "text-gray-300" : "text-gray-700"
               }`}
+              href="#"
             >
               Newsletter
             </Link>
             <Link
+              className="inline-flex items-center rounded-md bg-[#FF6B00] px-5 py-4 font-medium text-sm text-white transition-colors hover:bg-[#e65c00]"
               href="https://flickmart.app/"
-              className="inline-flex items-center rounded-md bg-[#FF6B00] px-5 py-4 text-sm font-medium text-white transition-colors hover:bg-[#e65c00]"
             >
               Visit Flickmart
             </Link>
@@ -88,80 +88,80 @@ export function FlickMartHeader() {
           <Sheet>
             <SheetTrigger asChild>
               <button
-                type="button"
-                className={`inline-flex items-center justify-center rounded-md p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF6B00] md:hidden ${
+                className={`inline-flex items-center justify-center rounded-md p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:ring-inset md:hidden ${
                   isDark
                     ? "text-gray-300 hover:bg-gray-800"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
+                type="button"
               >
                 <span className="sr-only">Open main menu</span>
-                <Menu className="h-6 w-6" aria-hidden="true" />
+                <Menu aria-hidden="true" className="h-6 w-6" />
               </button>
             </SheetTrigger>
             <SheetContent
+              className={isDark ? "h-full bg-gray-900" : "h-full bg-white"}
               side="top"
-              className={isDark ? "bg-gray-900 h-full" : "bg-white h-full"}
             >
               <SheetHeader>
                 <SheetTitle className={isDark ? "text-white" : "text-gray-900"}>
-                  <Link href="/" className="flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center ">
+                  <Link className="flex items-center gap-2" href="/">
+                    <div className="flex h-8 w-8 items-center justify-center">
                       <Image
-                        src="/Logo.svg"
                         alt="FlickMart Logo"
-                        className="text-lg font-bold text-white"
-                        width={60}
+                        className="font-bold text-lg text-white"
                         height={60}
+                        src="/Logo.svg"
+                        width={60}
                       />
                     </div>
                     <span
-                      className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}
+                      className={`font-bold text-2xl ${isDark ? "text-white" : "text-gray-900"}`}
                     >
                       Flick<span className="text-[#FF6B00]">Mart</span>
                     </span>
                   </Link>{" "}
                 </SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col justify-between h-3/4">
-                <div className="mt-8 space-y-2 *:border-b *:border-b-neutral-700 *:rounded-none">
+              <div className="flex h-3/4 flex-col justify-between">
+                <div className="mt-8 space-y-2 *:rounded-none *:border-b *:border-b-neutral-700">
                   <Link
-                    href="/blog"
-                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                    className={`block rounded-lg px-1 py-3 font-medium text-base transition-colors hover:bg-orange-500/10 ${
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
+                    href="/blog"
                   >
                     Blog
                   </Link>
                   <Link
-                    href="#"
-                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                    className={`block rounded-lg px-1 py-3 font-medium text-base transition-colors hover:bg-orange-500/10 ${
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
+                    href="#"
                   >
                     Projects
                   </Link>
                   <Link
-                    href="#"
-                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                    className={`block rounded-lg px-1 py-3 font-medium text-base transition-colors hover:bg-orange-500/10 ${
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
+                    href="#"
                   >
                     About
                   </Link>
                   <Link
-                    href="#"
-                    className={`block rounded-lg px-1 py-3 text-base font-medium transition-colors hover:bg-orange-500/10 ${
+                    className={`block rounded-lg px-1 py-3 font-medium text-base transition-colors hover:bg-orange-500/10 ${
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
+                    href="#"
                   >
                     Newsletter
                   </Link>
                 </div>
                 <div className="flex flex-col gap-4">
                   <Link
+                    className="mt-4 block rounded-lg bg-[#FF6B00] px-4 py-3 text-center font-medium text-base text-white transition-colors hover:bg-[#e65c00]"
                     href="https://flickmart.app/"
-                    className="mt-4 block rounded-lg bg-[#FF6B00]  px-4 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#e65c00]"
                   >
                     Visit Flickmart
                   </Link>

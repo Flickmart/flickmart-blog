@@ -4,8 +4,8 @@
 
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import { useMemo, useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useMemo, useRef } from "react";
 import { components } from "@/components/portable-text";
 import { TableOfContents } from "@/components/table-of-contents";
 import { Badge } from "@/components/ui/badge";
@@ -138,12 +138,12 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
           <div className="flex flex-col gap-8 max-lg:px-3">
             <article className="w-full min-w-0">
               <header className="mb-8 leading-tight lg:mb-14">
-                <div className="mb-4 flex items-center gap-4 text-text-muted text-sm lg:my-4 lg:text-md">
+                <div className="mb-4 flex items-center gap-4 text-sm text-text-muted lg:my-4 lg:text-md">
                   <span>{formattedDate}</span>
                   <span>•</span>
                   <span>{post.readTime}</span>
                 </div>
-                <h1 className="mb-4 break-words font-futsat font-semibold text-3xl leading-tight text-foreground lg:text-4xl">
+                <h1 className="mb-4 break-words font-futsat font-semibold text-3xl text-foreground leading-tight lg:text-4xl">
                   {post.title}
                 </h1>
                 <p className="mb-4 break-words text-muted-foreground text-sm md:text-md">
@@ -153,7 +153,7 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
                 <div className="mt-6 flex flex-wrap gap-3 lg:p-2">
                   {post.tags?.map((tag) => (
                     <Badge
-                      className="rounded-sm bg-muted font-light text-xs text-foreground"
+                      className="rounded-sm bg-muted font-light text-foreground text-xs"
                       key={tag}
                       variant="secondary"
                     >

@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="mt-20 border-t bg-background dark:bg-background">
       <div className="mx-auto max-w-6xl px-4 py-8 md:py-14">
         {/* Last Updated - Mobile Only */}
-        <div className="mb-8 text-text-muted text-sm md:hidden">
+        <div className="mb-8 text-sm text-text-muted md:hidden">
           Last updated July 18, 2025 at 5:20 PM WAT
         </div>
 
@@ -17,7 +17,7 @@ export function Footer() {
             <h3 className="mb-4 font-futsat font-light text-foreground text-lg">
               Joseph Ebuka • Software Engineer
             </h3>
-            <p className="mb-4 font-futsat text-text-muted text-sm leading-relaxed">
+            <p className="mb-4 font-futsat text-sm text-text-muted leading-relaxed">
               A dedicated problem solver who thrives on learning and building.
             </p>
 
@@ -154,7 +154,7 @@ export function Footer() {
           <h3 className="mb-3 font-futsat font-light text-foreground text-lg">
             Joseph Ebuka • Software Engineer
           </h3>
-          <p className="mb-4 font-futsat text-text-muted text-sm leading-relaxed">
+          <p className="mb-4 font-futsat text-sm text-text-muted leading-relaxed">
             A dedicated problem solver who thrives on learning and building.
           </p>
 
@@ -191,7 +191,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="hidden items-center justify-between border-t pt-8 text-text-muted text-sm md:flex">
+        <div className="hidden items-center justify-between border-t pt-8 text-sm text-text-muted md:flex">
           <div className="mb-4 md:mb-0">
             © 2025 Joseph Ebuka. All rights reserved.
           </div>

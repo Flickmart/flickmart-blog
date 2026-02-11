@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/types";
-import { useTheme } from "next-themes";
 
 interface FlickMartBlogCardProps {
   blog: BlogPost;
@@ -38,10 +38,10 @@ export function FlickMartBlogCard({
 
   return (
     <Link
-      href={`/blog/${blog.slug}`}
       className={`group flex flex-col overflow-hidden rounded-none transition-all duration-300 ${
         isDark ? "bg-gray-900" : "bg-white"
       } ${className}`}
+      href={`/blog/${blog.slug}`}
     >
       {/* Image */}
       {imageUrl && (
@@ -51,9 +51,9 @@ export function FlickMartBlogCard({
           <Image
             alt={blog.mainImage?.alt || blog.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            src={imageUrl}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src={imageUrl}
           />
         </div>
       )}
@@ -62,7 +62,7 @@ export function FlickMartBlogCard({
       <div className="flex flex-1 flex-col p-5">
         {/* Title */}
         <h3
-          className={`mb-3 line-clamp-2 text-xl font-bold transition-colors group-hover:text-[#FF6B00] ${
+          className={`mb-3 line-clamp-2 font-bold text-xl transition-colors group-hover:text-[#FF6B00] ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
@@ -103,7 +103,7 @@ export function FlickMartBlogCard({
 
         {/* Read More Button */}
         <div className="mt-auto">
-          <span className="inline-flex items-center rounded-full bg-[#FF6B00] px-4 py-2 text-sm font-medium text-white transition-colors group-hover:bg-[#e65c00]">
+          <span className="inline-flex items-center rounded-full bg-[#FF6B00] px-4 py-2 font-medium text-sm text-white transition-colors group-hover:bg-[#e65c00]">
             Read more
           </span>
         </div>
