@@ -1,16 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { demoBlogs } from "@/lib/demo-blogs";
+import type { BlogPost } from "@/lib/types";
 import { FlickMartBlogCard } from "./flickmart-blog-card";
 import { RecentBlogCard } from "./recent-blog-card";
 
-export function FlickMartHome() {
+export function FlickMartHome({ blogs }: { blogs: BlogPost[] }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const recentBlogs = demoBlogs.slice(0, 3);
-  const allBlogs = demoBlogs.slice(4);
+  const recentBlogs = blogs.slice(0, 3);
+  const allBlogs = blogs.slice(4);
 
   return (
     <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
