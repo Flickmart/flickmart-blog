@@ -50,7 +50,7 @@ export const postQuery = groq`
 `;
 
 export const latestPostsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc) [0...3] {
+  *[_type == "post"] | order(publishedAt desc) {
     _id,
     title,
     slug,

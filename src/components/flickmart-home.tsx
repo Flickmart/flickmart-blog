@@ -10,7 +10,7 @@ export function FlickMartHome({ blogs }: { blogs: BlogPost[] }) {
   const isDark = theme === "dark";
 
   const recentBlogs = blogs.slice(0, 3);
-  const allBlogs = blogs.slice(4);
+  const allBlogs = blogs.slice(3);
 
   return (
     <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
