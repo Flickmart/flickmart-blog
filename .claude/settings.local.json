@@ -1,5 +1,13 @@
 {
   "permissions": {
-    "allow": ["mcp__acp__Bash", "mcp__acp__Write", "mcp__acp__Edit"]
+    "allow": [
+      "mcp__acp__Bash",
+      "mcp__acp__Write",
+      "mcp__acp__Edit",
+      "mcp__Sanity__list_sanity_rules",
+      "mcp__Sanity__get_sanity_rules",
+      "mcp__Sanity__get_schema",
+      "mcp__Sanity__query_documents"
+    ]
   }
 }

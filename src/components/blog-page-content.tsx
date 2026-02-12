@@ -2,9 +2,9 @@
 
 import { useTheme } from "next-themes";
 import { FlickMartBlogCard } from "@/components/flickmart-blog-card";
-import type { demoBlogs } from "@/lib/demo-blogs";
+import type { BlogPost } from "@/lib/types";
 
-export function BlogPageContent({ blogs }: { blogs: typeof demoBlogs }) {
+export function BlogPageContent({ blogs }: { blogs: BlogPost[] }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
