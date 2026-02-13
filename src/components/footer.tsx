@@ -79,7 +79,7 @@ export function Footer() {
                 Email :
               </span>{" "}
               <span className="font-switzer-regular text-gray-400 text-sm">
-                flickmart#12@gmail.com
+                flickmart2024@gmail.com
               </span>
             </div>
           </div>
