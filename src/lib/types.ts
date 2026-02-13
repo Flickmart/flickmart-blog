@@ -87,6 +87,7 @@ export interface Subscriber {
   source?: string;
   confirmed: boolean;
   subscribedAt: string;
+  unsubscribeToken?: string;
 }
 
 export interface SubscribeResult {
