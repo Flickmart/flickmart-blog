@@ -73,12 +73,8 @@ export function FlickMartBlogCard({
         <div
           className={`mb-3 text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}
         >
-          {blog.author?.name && (
-            <span className="font-medium">{blog.author.name}</span>
-          )}
-          {(blog.author?.name || blog.publishedAt) && (
-            <span className="mx-2">•</span>
-          )}
+          {blog.author && <span className="font-medium">{blog.author}</span>}
+          {(blog.author || blog.publishedAt) && <span className="mx-2">•</span>}
           {blog.publishedAt && (
             <span>
               {new Date(blog.publishedAt).toLocaleDateString("en-US", {

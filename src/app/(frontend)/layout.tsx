@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { DM_Mono, Fira_Code, Fustat, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Footer } from "@/components/footer";
+import { NewsletterPopup } from "@/components/newsletter-popup";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
@@ -107,6 +108,7 @@ export default function RootLayout({
           <TOCProvider>
             {children}
             <Footer />
+            <NewsletterPopup />
             <AppDock />
             <Toaster position="top-right" />
           </TOCProvider>

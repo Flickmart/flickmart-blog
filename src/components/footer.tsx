@@ -3,6 +3,7 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { NewsletterForm } from "./newsletter-form";
 
 export function Footer() {
   return (
@@ -97,20 +98,7 @@ export function Footer() {
             </p>
 
             {/* Newsletter Form */}
-            <form className="flex flex-col gap-2 sm:flex-row">
-              <input
-                aria-label="Email address"
-                className="flex-1 rounded px-4 py-2 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
-                placeholder="Email address"
-                type="email"
-              />
-              <button
-                className="rounded bg-[#FF6600] px-6 py-2 font-semibold font-switzer-bold text-sm text-white transition-colors hover:bg-[#e65c00] focus:outline-none focus:ring-2 focus:ring-[#FF6600] focus:ring-offset-2 focus:ring-offset-black"
-                type="submit"
-              >
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
 

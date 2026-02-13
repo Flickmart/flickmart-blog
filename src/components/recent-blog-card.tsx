@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/types";
@@ -26,10 +27,11 @@ export function RecentBlogCard({ blog }: RecentBlogCardProps) {
   const imageUrl = getImageUrl();
 
   return (
-    <div
+    <Link
       className={`group flex overflow-hidden rounded-lg ${
         isDark ? "bg-gray-900" : "bg-white"
       }`}
+      href={`/blog/${blog.slug}`}
     >
       {/* Image - Left side */}
       {imageUrl && (
@@ -61,12 +63,8 @@ export function RecentBlogCard({ blog }: RecentBlogCardProps) {
         <div
           className={`mb-2 text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}
         >
-          {blog.author?.name && (
-            <span className="font-medium">{blog.author.name}</span>
-          )}
-          {(blog.author?.name || blog.publishedAt) && (
-            <span className="mx-2">•</span>
-          )}
+          {blog.author && <span className="font-medium">{blog.author}</span>}
+          {(blog.author || blog.publishedAt) && <span className="mx-2">•</span>}
           {blog.publishedAt && (
             <span>
               {new Date(blog.publishedAt).toLocaleDateString("en-US", {
@@ -96,6 +94,6 @@ export function RecentBlogCard({ blog }: RecentBlogCardProps) {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
