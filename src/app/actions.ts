@@ -88,13 +88,14 @@ export async function subscribeToNewsletter(
       return { error: "Already subscribed!" };
     }
 
-    // Create subscriber document
+    // Create subscriber document with unsubscribe token
     await writeClient.create({
       _type: "subscriber",
       email,
       source: "blog-post", // Footer subscription
-      confirmed: false,
+      confirmed: true, // Auto-confirm for testing
       subscribedAt: new Date().toISOString(),
+      unsubscribeToken: uuidv4(), // Add unique token
     });
 
     return { success: true, message: "Successfully subscribed!" };
