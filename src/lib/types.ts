@@ -79,3 +79,18 @@ export interface BlogResponse {
   prevPage?: number;
   nextPage?: number;
 }
+
+export interface Subscriber {
+  _id: string;
+  email: string;
+  name?: string;
+  source?: string;
+  confirmed: boolean;
+  subscribedAt: string;
+}
+
+export interface SubscribeResult {
+  success?: boolean;
+  message?: string;
+  error?: string;
+}

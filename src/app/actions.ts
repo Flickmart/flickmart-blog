@@ -1,7 +1,7 @@
 "use server";
 
 import { latestPostsQuery, postQuery, postsQuery } from "@/lib/queries";
-import { client } from "@/lib/sanity";
+import { client, writeClient } from "@/lib/sanity";
 import type { Blog, BlogPost } from "@/lib/types";
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -64,4 +64,42 @@ export async function getBlogPostPaths(): Promise<string[]> {
   const query = `*[_type == "post" && defined(slug.current)][].slug.current`;
   const slugs = await client.fetch(query);
   return slugs;
+}
+
+export async function subscribeToNewsletter(
+  prevState: any,
+  formData: FormData
+) {
+  const email = formData.get("email") as string;
+
+  // Email validation
+  if (!(email && /^\S+@\S+\.\S+$/.test(email))) {
+    return { error: "Valid email required" };
+  }
+
+  try {
+    // Check for duplicates
+    const existing = await client.fetch(
+      `*[_type == "subscriber" && email == $email][0]`,
+      { email }
+    );
+
+    if (existing) {
+      return { error: "Already subscribed!" };
+    }
+
+    // Create subscriber document
+    await writeClient.create({
+      _type: "subscriber",
+      email,
+      source: "blog-post", // Footer subscription
+      confirmed: false,
+      subscribedAt: new Date().toISOString(),
+    });
+
+    return { success: true, message: "Successfully subscribed!" };
+  } catch (error) {
+    console.error("Newsletter subscription error:", error);
+    return { error: "Subscription failed. Try again." };
+  }
 }
