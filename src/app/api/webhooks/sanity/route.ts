@@ -20,175 +20,7 @@ function verifyWebhookSignature(
   return digest === signature;
 }
 
-export async function POST(request: Request) {
-  try {
-    console.log("🔔 Sanity Webhook received");
-
-    const body = await request.json();
-    console.log("📦 Webhook payload:", JSON.stringify(body, null, 2));
-
-    const headersList = headers();
-    const signature = headersList.get("sanity-webhook-signature");
-    console.log("🔐 Webhook signature:", signature);
-
-    // Verify webhook (set secret in Sanity)
-    // const isValid = verifyWebhookSignature(body, signature, process.env.SANITY_WEBHOOK_SECRET!);
-    // if (!isValid) {
-    //   console.log("❌ Invalid webhook signature");
-    //   return Response.json({ error: "Invalid signature" }, { status: 401 });
-    // }
-
-    // Check if this is a post publish event
-    console.log("🔍 Operation:", body.operation);
-
-    if (body.operation === "create" || body.operation === "update") {
-      const document = body.result;
-
-      if (document._type === "post" && document.publishedAt) {
-        // Check if post was just published (not just updated)
-        const publishedAt = new Date(document.publishedAt).getTime();
-        const now = Date.now();
-        const oneHourAgo = now - 60 * 60 * 1000;
-
-        // Only send email if published within last hour
-        if (publishedAt > oneHourAgo) {
-          // Check if we already sent an email for this post
-          const alreadySent = await client.fetch(
-            `*[_type == "post" && _id == $postId && newsletterSent][0]`,
-            { postId: document._id }
-          );
-
-          if (!alreadySent) {
-            await sendNewPostEmail(document);
-
-            // Mark as sent
-            await client
-              .patch(document._id)
-              .set({
-                newsletterSent: true,
-                newsletterSentAt: new Date().toISOString(),
-              })
-              .commit();
-          }
-        } else {
-          console.log("📝 Post not published yet");
-        }
-      } else {
-        console.log("❌ Not a blog post - ignoring");
-      }
-    } else {
-      console.log("❌ Not create/update operation - ignoring");
-    }
-
-    console.log("✅ Webhook processed successfully");
-    return Response.json({ success: true });
-  } catch (error) {
-    console.error("❌ Webhook error:", error);
-    console.error(
-      "❌ Error message:",
-      error instanceof Error ? error.message : "Unknown"
-    );
-    console.error(
-      "❌ Error stack:",
-      error instanceof Error ? error.stack : "Unknown"
-    );
-    console.error("❌ Error details:", {
-      name: error instanceof Error ? error.name : "Unknown",
-      cause: error instanceof Error ? error.cause : "Unknown",
-      toString: error instanceof Error ? error.toString() : "Unknown",
-    });
-
-    return Response.json(
-      {
-        error: "Webhook processing failed",
-        details: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 500 }
-    );
-  }
-}
-
-if (document.publishedAt) {
-  console.log("📅 Published at:", document.publishedAt);
-
-  // Check if post was just published (not just updated)
-  const publishedAt = new Date(document.publishedAt).getTime();
-  const now = Date.now();
-  const oneHourAgo = now - 60 * 60 * 1000;
-
-  console.log("⏰ Time check:");
-  console.log("  - Published:", new Date(publishedAt).toISOString());
-  console.log("  - One hour ago:", new Date(oneHourAgo).toISOString());
-  console.log("  - Should send:", publishedAt > oneHourAgo);
-
-  // Only send email if published within last hour
-  if (publishedAt > oneHourAgo) {
-    console.log(
-      "🚀 Post published within last hour - checking if email sent..."
-    );
-
-    // Check if we already sent an email for this post
-    const alreadySent = await client.fetch(
-      `*[_type == "post" && _id == $postId && newsletterSent][0]`,
-      { postId: document._id }
-    );
-
-    console.log(
-      "📧 Already sent?",
-      alreadySent ? "YES - Skipping" : "NO - Sending email"
-    );
-
-    if (alreadySent) {
-      console.log("⏭️ Skipping - already sent");
-    } else {
-      console.log("📧 Sending newsletter email for post:", document.title);
-      await sendNewPostEmail(document);
-
-      // Mark as sent
-      console.log("✅ Marking post as newsletter sent");
-      await client
-        .patch(document._id)
-        .set({
-          newsletterSent: true,
-          newsletterSentAt: new Date().toISOString(),
-        })
-        .commit();
-
-      console.log("✅ Newsletter email sent successfully");
-    }
-  } else {
-    console.log("⏰ Post published more than 1 hour ago - skipping");
-  }
-} else {
-  console.log("📝 Post not published yet");
-}
-} else
-{
-  console.log("❌ Not a blog post - ignoring");
-}
-} else
-{
-  console.log("❌ Not create/update operation - ignoring");
-}
-
-console.log("✅ Webhook processed successfully");
-return Response.json({ success: true });
-} catch (error)
-{
-  console.error("❌ Webhook error:", error);
-  console.error(
-    "❌ Error stack:",
-    error instanceof Error ? error.stack : "Unknown"
-  );
-  return Response.json(
-      { error: "Webhook processing failed" },
-      { status: 500 }
-    );
-}
-}
-
-async
-function sendNewPostEmail(post: any) {
+async function sendNewPostEmail(post: any) {
   console.log("📧 sendNewPostEmail called");
   console.log("📧 Post title:", post.title);
   console.log("📧 Post slug:", post.slug?.current);
@@ -264,7 +96,9 @@ function sendNewPostEmail(post: any) {
                 ${
                   post.mainImage
                     ? `
-                  <img src="${post.mainImage.asset.url}" alt="${post.mainImage.alt}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;">
+                  <img src="${
+                    post.mainImage.asset.url
+                  }" alt="${post.mainImage.alt}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;">
                 `
                     : ""
                 }
@@ -290,4 +124,117 @@ function sendNewPostEmail(post: any) {
   }
 
   console.log(`✅ Sent new post email to ${subscribers.length} subscribers`);
+}
+
+export async function POST(request: Request) {
+  try {
+    console.log("🔔 Sanity Webhook received");
+
+    const body = await request.json();
+    console.log("📦 Webhook payload:", JSON.stringify(body, null, 2));
+
+    const headersList = headers();
+    const signature = headersList.get("sanity-webhook-signature");
+    console.log("🔐 Webhook signature:", signature);
+
+    // Verify webhook (set secret in Sanity)
+    // const isValid = verifyWebhookSignature(body, signature, process.env.SANITY_WEBHOOK_SECRET!);
+    // if (!isValid) {
+    //   console.log("❌ Invalid webhook signature");
+    //   return Response.json({ error: "Invalid signature" }, { status: 401 });
+    // }
+
+    // Check if this is a post publish event
+    console.log("🔍 Operation:", body.operation);
+
+    if (body.operation === "create" || body.operation === "update") {
+      const document = body.result;
+
+      if (document._type === "post" && document.publishedAt) {
+        console.log("📅 Published at:", document.publishedAt);
+
+        // Check if post was just published (not just updated)
+        const publishedAt = new Date(document.publishedAt).getTime();
+        const now = Date.now();
+        const oneHourAgo = now - 60 * 60 * 1000;
+
+        console.log("⏰ Time check:");
+        console.log("  - Published:", new Date(publishedAt).toISOString());
+        console.log("  - One hour ago:", new Date(oneHourAgo).toISOString());
+        console.log("  - Should send:", publishedAt > oneHourAgo);
+
+        // Only send email if published within last hour
+        if (publishedAt > oneHourAgo) {
+          console.log(
+            "🚀 Post published within last hour - checking if email sent..."
+          );
+
+          // Check if we already sent an email for this post
+          const alreadySent = await client.fetch(
+            `*[_type == "post" && _id == $postId && newsletterSent][0]`,
+            { postId: document._id }
+          );
+
+          console.log(
+            "📧 Already sent?",
+            alreadySent ? "YES - Skipping" : "NO - Sending email"
+          );
+
+          if (alreadySent) {
+            console.log("⏭️ Skipping - already sent");
+          } else {
+            console.log(
+              "📧 Sending newsletter email for post:",
+              document.title
+            );
+            await sendNewPostEmail(document);
+
+            // Mark as sent
+            console.log("✅ Marking post as newsletter sent");
+            await client
+              .patch(document._id)
+              .set({
+                newsletterSent: true,
+                newsletterSentAt: new Date().toISOString(),
+              })
+              .commit();
+
+            console.log("✅ Newsletter email sent successfully");
+          }
+        } else {
+          console.log("⏰ Post published more than 1 hour ago - skipping");
+        }
+      } else {
+        console.log("❌ Not a blog post or not published - ignoring");
+      }
+    } else {
+      console.log("❌ Not create/update operation - ignoring");
+    }
+
+    console.log("✅ Webhook processed successfully");
+    return Response.json({ success: true });
+  } catch (error) {
+    console.error("❌ Webhook error:", error);
+    console.error(
+      "❌ Error message:",
+      error instanceof Error ? error.message : "Unknown"
+    );
+    console.error(
+      "❌ Error stack:",
+      error instanceof Error ? error.stack : "Unknown"
+    );
+    console.error("❌ Error details:", {
+      name: error instanceof Error ? error.name : "Unknown",
+      cause: error instanceof Error ? error.cause : "Unknown",
+      toString: error instanceof Error ? error.toString() : "Unknown",
+    });
+
+    return Response.json(
+      {
+        error: "Webhook processing failed",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
+  }
 }
