@@ -43,65 +43,32 @@ export async function POST(request: Request) {
 
     if (body.operation === "create" || body.operation === "update") {
       const document = body.result;
-      console.log("📄 Document type:", document._type);
-      console.log("📄 Document ID:", document._id);
 
-      if (document._type === "post") {
-        console.log("✅ This is a blog post");
+      if (document._type === "post" && document.publishedAt) {
+        // Check if post was just published (not just updated)
+        const publishedAt = new Date(document.publishedAt).getTime();
+        const now = Date.now();
+        const oneHourAgo = now - 60 * 60 * 1000;
 
-        if (document.publishedAt) {
-          console.log("📅 Published at:", document.publishedAt);
+        // Only send email if published within last hour
+        if (publishedAt > oneHourAgo) {
+          // Check if we already sent an email for this post
+          const alreadySent = await client.fetch(
+            `*[_type == "post" && _id == $postId && newsletterSent][0]`,
+            { postId: document._id }
+          );
 
-          // Check if post was just published (not just updated)
-          const publishedAt = new Date(document.publishedAt).getTime();
-          const now = Date.now();
-          const oneHourAgo = now - 60 * 60 * 1000;
+          if (!alreadySent) {
+            await sendNewPostEmail(document);
 
-          console.log("⏰ Time check:");
-          console.log("  - Published:", new Date(publishedAt).toISOString());
-          console.log("  - One hour ago:", new Date(oneHourAgo).toISOString());
-          console.log("  - Should send:", publishedAt > oneHourAgo);
-
-          // Only send email if published within last hour
-          if (publishedAt > oneHourAgo) {
-            console.log(
-              "🚀 Post published within last hour - checking if email sent..."
-            );
-
-            // Check if we already sent an email for this post
-            const alreadySent = await client.fetch(
-              `*[_type == "post" && _id == $postId && newsletterSent][0]`,
-              { postId: document._id }
-            );
-
-            console.log(
-              "📧 Already sent?",
-              alreadySent ? "YES - Skipping" : "NO - Sending email"
-            );
-
-            if (alreadySent) {
-              console.log("⏭️ Skipping - already sent");
-            } else {
-              console.log(
-                "📧 Sending newsletter email for post:",
-                document.title
-              );
-              await sendNewPostEmail(document);
-
-              // Mark as sent
-              console.log("✅ Marking post as newsletter sent");
-              await client
-                .patch(document._id)
-                .set({
-                  newsletterSent: true,
-                  newsletterSentAt: new Date().toISOString(),
-                })
-                .commit();
-
-              console.log("✅ Newsletter email sent successfully");
-            }
-          } else {
-            console.log("⏰ Post published more than 1 hour ago - skipping");
+            // Mark as sent
+            await client
+              .patch(document._id)
+              .set({
+                newsletterSent: true,
+                newsletterSentAt: new Date().toISOString(),
+              })
+              .commit();
           }
         } else {
           console.log("📝 Post not published yet");
